@@ -1,0 +1,52 @@
+#include <stdio.h>
+#include <string.h>
+int main()
+{
+	int n,N,m;
+	char zf[100][1000];
+	char cc[1000];
+	printf("请输入你要输入的字符串个数\n");
+	scanf("%d",&m);
+  fflush（stdin）;//清除scanf的缓冲区
+	zf[m][1000]='\0';
+	printf("请输入字符串:");
+	for(n=0;n<m;n++)
+	{
+		for(N=0;N<1000;N++)
+		{
+			scanf("%c",&zf[n][N]);
+			if(zf[n][N]=='\n')
+			{
+				zf[n][N+1]='\0';
+				break;
+			}
+		}
+		printf("你已输入%d个字符串\n",n+1);
+	}
+	A:for(n=0;n<m-1;n++)
+	{
+		for(N=0;N<1000;N++)
+		{
+			if(strlen(zf[n])<strlen(zf[n+1]))
+			{
+				strcpy(cc,zf[n]);
+				strcpy(zf[n],zf[n+1]);
+				strcpy(zf[n+1],cc);
+				goto A;
+			}
+		}
+	}
+	printf("按最长序排序得:\n");
+	for(n=0;n<m;n++)
+	{
+		for(N=0;N<1000;N++)
+		{
+			if(zf[n][N]=='\0')
+				break;
+			printf("%c",zf[n][N]);
+		}
+		printf("\n");
+	}
+	printf("最长的字符串长度是%d\n",strlen(zf[0])-1);
+	return 0;
+}
