@@ -7,7 +7,7 @@ int main()
 	char cc[1000];
 	printf("请输入你要输入的字符串个数\n");
 	scanf("%d",&m);
-  fflush（stdin）;//清除scanf的缓冲区
+	fflush(stdin);//清除scanf的缓冲区
 	zf[m][1000]='\0';
 	printf("请输入字符串:");
 	for(n=0;n<m;n++)
